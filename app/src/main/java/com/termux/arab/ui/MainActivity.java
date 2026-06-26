@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, AIAssistantActivity.class));
         });
 
+        Button btnKali = findViewById(R.id.btn_kali);
+        btnKali.setOnClickListener(v -> {
+            startActivity(new Intent(this, KaliLinuxActivity.class));
+        });
+
         // تهيئة بيئة Linux
         new com.termux.arab.core.LinuxEnv(this).init();
 

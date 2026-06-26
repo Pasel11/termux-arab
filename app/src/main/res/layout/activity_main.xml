@@ -204,6 +204,17 @@
             android:backgroundTint="#4527A0"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_kali"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="🐉 كالي لينكس - 200+ أداة"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1A237E"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
         <TextView

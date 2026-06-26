@@ -27,8 +27,23 @@ public class ToolRunnerActivity extends AppCompatActivity {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
         String toolId = getIntent().getStringExtra("tool_id");
-        for (Tool t : ToolRegistry.getAllTools()) {
-            if (t.id.equals(toolId)) { tool = t; break; }
+
+        // فحص إذا كانت أداة كالي
+        if (toolId != null && toolId.startsWith("kali_")) {
+            tool = new Tool();
+            tool.id = toolId;
+            tool.name = getIntent().getStringExtra("kali_name");
+            tool.nameEn = toolId.replace("kali_", "");
+            tool.description = getIntent().getStringExtra("kali_desc");
+            tool.command = getIntent().getStringExtra("kali_command");
+            tool.example = getIntent().getStringExtra("kali_example");
+            tool.icon = "🐉";
+            tool.category = "pentest";
+            tool.needsArgs = true;
+        } else {
+            for (Tool t : ToolRegistry.getAllTools()) {
+                if (t.id.equals(toolId)) { tool = t; break; }
+            }
         }
         if (tool == null) { finish(); return; }
 

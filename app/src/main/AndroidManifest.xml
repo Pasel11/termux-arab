@@ -52,6 +52,7 @@
         <activity android:name=".ui.PackageManagerActivity" />
         <activity android:name=".ui.WebPentestActivity" />
         <activity android:name=".ui.AIAssistantActivity" />
+        <activity android:name=".ui.KaliLinuxActivity" />
 
     </application>
 </manifest>
