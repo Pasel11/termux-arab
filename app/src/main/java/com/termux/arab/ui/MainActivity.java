@@ -98,6 +98,27 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, KaliLinuxActivity.class));
         });
 
+        Button btnInstaller = findViewById(R.id.btn_installer);
+        btnInstaller.setOnClickListener(v -> {
+            startActivity(new Intent(this, ToolInstallerActivity.class));
+        });
+
+        // بدء خدمة الخلفية
+        com.termux.arab.core.BackgroundService.start(this);
+
+        // بدء نافذة AI العائمة
+        AIFloatingWindow aiWindow = new AIFloatingWindow(this);
+        Button btnFloatingAI = findViewById(R.id.btn_floating_ai);
+        btnFloatingAI.setOnClickListener(v -> {
+            if (aiWindow.isVisible()) {
+                aiWindow.hide();
+                btnFloatingAI.setText("🤖 تفعيل المساعد");
+            } else {
+                aiWindow.show();
+                btnFloatingAI.setText("🤖 إخفاء المساعد");
+            }
+        });
+
         // تهيئة بيئة Linux
         new com.termux.arab.core.LinuxEnv(this).init();
 

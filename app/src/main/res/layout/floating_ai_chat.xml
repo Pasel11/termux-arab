@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#E6000000"
+    android:gravity="center" android:padding="16dp">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:orientation="vertical"
+        android:background="#1A1A1A" android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:padding="12dp"
+            android:background="#0F4C2A">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="🤖 مساعد الذكاء الاصطناعي"
+                android:textColor="#FFF" android:textSize="16sp" android:textStyle="bold" />
+            <Button android:id="@+id/floating_btn_close"
+                android:layout_width="36dp" android:layout_height="36dp"
+                android:text="✕" android:textColor="#FFF" android:backgroundTint="#F44336" />
+        </LinearLayout>
+
+        <ScrollView android:id="@+id/floating_chat_scroll"
+            android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:padding="12dp">
+            <TextView android:id="@+id/floating_chat_output"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="#00FF41" android:textSize="13sp"
+                android:fontFamily="monospace" android:lineSpacingExtra="4dp" />
+        </ScrollView>
+
+        <EditText android:id="@+id/floating_api_key"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="API Key (اختياري - OpenAI)" android:textColor="#FFF"
+            android:textColorHint="#666" android:background="#0D0D0D"
+            android:padding="10dp" android:layout_margin="8dp"
+            android:password="true" android:visibility="visible" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:padding="8dp">
+            <EditText android:id="@+id/floating_chat_input"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:hint="اكتب سؤالك..."
+                android:textColor="#FFF" android:textColorHint="#666"
+                android:background="#0D0D0D" android:padding="12dp"
+                android:layout_marginEnd="4dp" />
+            <Button android:id="@+id/floating_btn_send"
+                android:layout_width="wrap_content" android:layout_height="45dp"
+                android:text="▶" android:textColor="#FFF" android:backgroundTint="#0F4C2A" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

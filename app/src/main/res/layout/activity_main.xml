@@ -215,6 +215,28 @@
             android:backgroundTint="#1A237E"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_installer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="⬇ تثبيت أدوات حقيقية"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2E7D32"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_floating_ai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="🤖 تفعيل المساعد العائم"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6A1B9A"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
         <TextView
