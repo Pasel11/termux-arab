@@ -154,9 +154,9 @@ public class RealToolManager {
                     output.write(buffer, 0, bytesRead);
                     downloaded += bytesRead;
                     if (totalSize > 0) {
-                        int pct = 20 + (int)(downloaded * 70 / totalSize);
-                        final int finalPct = pct;
-                        handler.post(() -> callback.onProgress("📥 " + downloaded/1024 + " KB...", finalPct));
+                        final int finalPct = 20 + (int)(downloaded * 70 / totalSize);
+                        final long finalDl = downloaded;
+                        handler.post(() -> callback.onProgress("📥 " + finalDl/1024 + " KB...", finalPct));
                     }
                 }
 
