@@ -91,7 +91,7 @@ public class RealToolManager {
                 Process p = Runtime.getRuntime().exec(new String[]{
                     outputFile.getAbsolutePath(), "--list"
                 });
-                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(p.getInputStream()));
                 String line;
                 while ((line = reader.readLine()) != null) {
                     File link = new File(binDir, line.trim());
@@ -302,14 +302,5 @@ public class RealToolManager {
             "LANG=en_US.UTF-8",
             "SHELL=/system/bin/sh"
         };
-    }
-
-    private static class BufferedReader {
-        private final java.io.BufferedReader reader;
-        BufferedReader(java.io.InputStream is) {
-            reader = new java.io.BufferedReader(new java.io.InputStreamReader(is));
-        }
-        String readLine() throws Exception { return reader.readLine(); }
-        void close() throws Exception { reader.close(); }
     }
 }

@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.termux.arab.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
