@@ -48,6 +48,7 @@
         <activity android:name=".ui.SystemMonitorActivity" />
         <activity android:name=".ui.PasswordToolsActivity" />
         <activity android:name=".ui.HttpTesterActivity" />
+        <activity android:name=".ui.GithubActivity" />
 
     </application>
 </manifest>

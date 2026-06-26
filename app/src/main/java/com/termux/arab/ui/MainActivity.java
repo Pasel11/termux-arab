@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, HttpTesterActivity.class));
         });
 
+        Button btnGithub = findViewById(R.id.btn_github);
+        btnGithub.setOnClickListener(v -> {
+            startActivity(new Intent(this, GithubActivity.class));
+        });
+
         // إحصائيات
         TextView stats = findViewById(R.id.tv_stats);
         stats.setText(ToolRegistry.getAllTools().size() + " أداة في " + cats.length + " فئات");

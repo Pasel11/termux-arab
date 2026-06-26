@@ -162,6 +162,17 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_github"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="🐙 GitHub - تواصل بحسابك"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#24292E"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
