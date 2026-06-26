@@ -85,6 +85,34 @@
             android:layout_marginBottom="8dp">
 
             <Button
+                android:id="@+id/btn_vuln_scanner"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="🛡️ مكتشف الثغرات"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D32F2F"
+                android:textSize="12sp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_vuln_db"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="📚 قاعدة الثغرات"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#7B1FA2"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
                 android:id="@+id/btn_network_scanner"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
