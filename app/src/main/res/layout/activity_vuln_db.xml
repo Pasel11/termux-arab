@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA">
+
+    <!-- بحث -->
+    <EditText
+        android:id="@+id/vuln_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="🔍 ابحث برقم CVE أو الاسم..."
+        android:background="#FFFFFF"
+        android:padding="14dp"
+        android:layout_margin="8dp" />
+
+    <!-- عدّاد -->
+    <TextView
+        android:id="@+id/vuln_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#0F4C2A"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="4dp" />
+
+    <!-- فلاتر الفئات -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/cat_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp" />
+    </HorizontalScrollView>
+
+    <!-- القائمة -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vuln_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp" />
+</LinearLayout>

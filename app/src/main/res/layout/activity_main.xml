@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <Button
                 android:id="@+id/btn_terminal"
@@ -65,7 +65,7 @@
                 android:text="💻 الطرفية"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#0F4C2A"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="4dp" />
 
             <Button
                 android:id="@+id/btn_about"
@@ -74,7 +74,34 @@
                 android:layout_weight="1"
                 android:text="ℹ️ حول"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#1976D2" />
+                android:backgroundTint="#1976D2"
+                android:layout_marginEnd="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_vuln_scanner"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="🛡️ مكتشف الثغرات"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#D32F2F"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_vuln_db"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="📚 قاعدة الثغرات"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#7B1FA2" />
         </LinearLayout>
 
         <TextView

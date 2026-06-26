@@ -42,6 +42,8 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity android:name=".ui.AboutActivity" />
+        <activity android:name=".ui.VulnScannerActivity" />
+        <activity android:name=".ui.VulnDBActivity" />
 
     </application>
 </manifest>

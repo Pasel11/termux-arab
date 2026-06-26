@@ -43,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, AboutActivity.class));
         });
 
+        Button btnVulnScanner = findViewById(R.id.btn_vuln_scanner);
+        btnVulnScanner.setOnClickListener(v -> {
+            startActivity(new Intent(this, VulnScannerActivity.class));
+        });
+
+        Button btnVulnDB = findViewById(R.id.btn_vuln_db);
+        btnVulnDB.setOnClickListener(v -> {
+            startActivity(new Intent(this, VulnDBActivity.class));
+        });
+
         // إحصائيات
         TextView stats = findViewById(R.id.tv_stats);
         stats.setText(ToolRegistry.getAllTools().size() + " أداة في " + cats.length + " فئات");
