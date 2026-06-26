@@ -83,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, PackageManagerActivity.class));
         });
 
+        Button btnWebPentest = findViewById(R.id.btn_web_pentest);
+        btnWebPentest.setOnClickListener(v -> {
+            startActivity(new Intent(this, WebPentestActivity.class));
+        });
+
+        Button btnAI = findViewById(R.id.btn_ai);
+        btnAI.setOnClickListener(v -> {
+            startActivity(new Intent(this, AIAssistantActivity.class));
+        });
+
         // تهيئة بيئة Linux
         new com.termux.arab.core.LinuxEnv(this).init();
 

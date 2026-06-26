@@ -50,6 +50,8 @@
         <activity android:name=".ui.HttpTesterActivity" />
         <activity android:name=".ui.GithubActivity" />
         <activity android:name=".ui.PackageManagerActivity" />
+        <activity android:name=".ui.WebPentestActivity" />
+        <activity android:name=".ui.AIAssistantActivity" />
 
     </application>
 </manifest>
