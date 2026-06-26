@@ -35,11 +35,11 @@ public class ToolAdapter extends RecyclerView.Adapter<ToolAdapter.VH> {
         h.desc.setText(t.description);
         if (t.riskLevel >= 2) {
             h.riskBadge.setVisibility(View.VISIBLE);
-            h.riskBadge.setText("⚠️ خطير");
+            h.riskText.setText("⚠️ خطير");
             h.riskBadge.setBackgroundColor(0xFFFF5722);
         } else if (t.riskLevel == 1) {
             h.riskBadge.setVisibility(View.VISIBLE);
-            h.riskBadge.setText("تحذير");
+            h.riskText.setText("تحذير");
             h.riskBadge.setBackgroundColor(0xFFFF9800);
         } else {
             h.riskBadge.setVisibility(View.GONE);
@@ -55,7 +55,7 @@ public class ToolAdapter extends RecyclerView.Adapter<ToolAdapter.VH> {
     @Override public int getItemCount() { return tools.size(); }
 
     static class VH extends RecyclerView.ViewHolder {
-        TextView icon, name, nameEn, desc;
+        TextView icon, name, nameEn, desc, riskText;
         LinearLayout riskBadge, rootBadge;
         VH(View v) {
             super(v);
@@ -64,6 +64,7 @@ public class ToolAdapter extends RecyclerView.Adapter<ToolAdapter.VH> {
             nameEn = v.findViewById(R.id.tool_name_en);
             desc = v.findViewById(R.id.tool_desc);
             riskBadge = v.findViewById(R.id.risk_badge);
+            riskText = v.findViewById(R.id.risk_text);
             rootBadge = v.findViewById(R.id.root_badge);
         }
     }
