@@ -679,7 +679,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">تطبيق تيرمكس العرب</h3>
                 <p className="text-emerald-100 mb-1">الإصدار 1.7.3</p>
-                <p className="text-sm text-emerald-200 mb-6">حجم الملف: ~120 ميجابايت (APK Universal)</p>
+                <p className="text-sm text-emerald-200 mb-6">حجم الملف: 120 ميجابايت (APK Universal كامل)</p>
 
                 <div className="space-y-2 mb-6 text-sm text-right">
                   <div className="flex items-center gap-2 justify-end">
@@ -700,27 +700,16 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <a href="/termux-arab/downloads/install-termux-arab.sh" download>
-                  <Button size="lg" className="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold h-14 text-lg">
+                <a href="https://github.com/termux-arab/termux-arab/releases/download/v1.7.3/termux-arab-v1.7.3.apk" download>
+                  <Button size="lg" className="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold h-14 text-lg animate-pulse-glow">
                     <Download className="w-5 h-5 ml-2" />
-                    تحميل سكريبت التثبيت
-                  </Button>
-                </a>
-                <a href="/termux-arab/downloads/termux-arab-v1.7.3.apk.part0" download>
-                  <Button size="sm" variant="outline" className="w-full mt-2 bg-white/10 border-white/30 text-white hover:bg-white/20">
-                    <Download className="w-4 h-4 ml-2" />
-                    تحميل يدوي: الجزء 1 (95MB)
-                  </Button>
-                </a>
-                <a href="/termux-arab/downloads/termux-arab-v1.7.3.apk.part1" download>
-                  <Button size="sm" variant="outline" className="w-full mt-2 bg-white/10 border-white/30 text-white hover:bg-white/20">
-                    <Download className="w-4 h-4 ml-2" />
-                    تحميل يدوي: الجزء 2 (25MB)
+                    تحميل التطبيق APK (120MB)
                   </Button>
                 </a>
                 <p className="text-xs text-emerald-200 mt-3">
-                  الطريقة الأسهل: حمّل سكريبت التثبيت وشغّله على Linux/Mac.<br/>
-                  أو حمّل الجزئين يدوياً وادمجهما: <code className="bg-black/30 px-1 rounded terminal-text">cat part0 part1 &gt; app.apk</code>
+                  ✅ ملف APK كامل ومباشر من GitHub Releases<br/>
+                  ✅ يدعم جميع المعالجات (Universal - ARM/ARM64/x86/x86_64)<br/>
+                  ✅ تحميل سريع بدون تقسيم - يعمل مباشرة بعد التحميل
                 </p>
               </Card>
 
@@ -765,9 +754,9 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold mb-6 text-center">طريقة التثبيت</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                  { step: 1, title: "حمّل الملف", desc: "حمّل سكريبت التثبيت أو الجزئين" },
-                  { step: 2, title: "اجمع الملف", desc: "شغّل السكريبت أو ادمج الجزئين في APK" },
-                  { step: 3, title: "ثبّت التطبيق", desc: "فعّل 'تثبيت من مصادر غير معروفة' وثبّت" },
+                  { step: 1, title: "حمّل ملف APK", desc: "اضغط زر التحميل - ملف واحد كامل (120MB)" },
+                  { step: 2, title: "فعّل المصادر", desc: "إعدادات → الأمان → تثبيت من مصادر غير معروفة" },
+                  { step: 3, title: "ثبّت التطبيق", desc: "افتح ملف APK واضغط تثبيت - جاهز خلال ثوانٍ" },
                 ].map((s) => (
                   <Card key={s.step} className="p-6 text-center">
                     <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-gradient flex items-center justify-center text-white font-bold text-lg">
@@ -927,7 +916,7 @@ export default function HomePage() {
               <h4 className="font-bold mb-3 text-amber-300">التحميلات</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="/termux-arab/downloads/termux-arab-v1.7.3.apk" className="hover:text-amber-300 transition-colors flex items-center gap-2">
+                  <a href="https://github.com/termux-arab/termux-arab/releases/download/v1.7.3/termux-arab-v1.7.3.apk" className="hover:text-amber-300 transition-colors flex items-center gap-2">
                     <Download className="w-4 h-4" />
                     تطبيق APK
                   </a>

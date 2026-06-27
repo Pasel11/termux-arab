@@ -199,7 +199,7 @@ export default function RootLayout({
               },
               description: SITE_DESCRIPTION,
               url: SITE_URL,
-              downloadUrl: `${SITE_URL}/downloads/termux-arab-v1.7.3.apk`,
+              downloadUrl: `https://github.com/termux-arab/termux-arab/releases/download/v1.7.3/termux-arab-v1.7.3.apk`,
               featureList: [
                 "واجهة عربية كاملة RTL",
                 "17 شاشة احترافية متكاملة",
