@@ -30,7 +30,7 @@ echo -e "${NC}"
 
 # Configuration
 # Replace USER and REPO with your actual GitHub username and repo name
-GITHUB_USER="Pasel11"
+GITHUB_USER="termux-arab"
 GITHUB_REPO="termux-arab"
 BRANCH="main"
 

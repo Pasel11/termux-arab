@@ -17,7 +17,7 @@ const notoNaskh = Noto_Naskh_Arabic({
   display: "swap",
 });
 
-const SITE_URL = "https://pasel11.github.io/termux-arab";
+const SITE_URL = "https://termux-arab.github.io/termux-arab";
 const SITE_NAME = "تيرمكس العرب";
 const SITE_DESCRIPTION =
   "تيرمكس العرب - تطبيق طرفية احترافي بواجهة عربية كاملة لأندرويد. 17 شاشة احترافية، 200+ أداة كالي لينكس، 100+ أمر Linux حقيقي، اختبار اختراق، ذكاء اصطناعي، وتكامل GitHub - بدون Root.";

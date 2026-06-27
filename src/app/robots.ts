@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://pasel11.github.io/termux-arab";
+const SITE_URL = "https://termux-arab.github.io/termux-arab";
 
 export const dynamic = "force-static";
 
