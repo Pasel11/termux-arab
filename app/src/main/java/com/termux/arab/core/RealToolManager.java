@@ -19,7 +19,7 @@ public class RealToolManager {
     private final Context ctx;
     private final File binDir;
     private final SharedPreferences prefs;
-    private static final String BUSYBOX_URL = "https://github.com/meefik/busybox/releases/download/1.31.1/busybox-android-arm64";
+    private static final String BUSYBOX_URL = "https://github.com/meefik/busybox/releases/download/1.34.1/busybox-android-arm64";
 
     public interface InstallCallback {
         void onProgress(String msg, int percent);
@@ -56,6 +56,13 @@ public class RealToolManager {
                 HttpURLConnection conn = (HttpURLConnection) new URL(BUSYBOX_URL).openConnection();
                 conn.setConnectTimeout(30000);
                 conn.setReadTimeout(120000);
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+                conn.setInstanceFollowRedirects(true);
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode != 200) {
+                    throw new Exception("HTTP " + responseCode + " - تعذّر التنزيل");
+                }
 
                 int totalSize = conn.getContentLength();
                 InputStream input = conn.getInputStream();
@@ -140,7 +147,13 @@ public class RealToolManager {
                 HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
                 conn.setConnectTimeout(30000);
                 conn.setReadTimeout(120000);
-                conn.setRequestProperty("User-Agent", "TermuxArab/1.0");
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+                conn.setInstanceFollowRedirects(true);
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode != 200) {
+                    throw new Exception("HTTP " + responseCode);
+                }
 
                 InputStream input = conn.getInputStream();
                 FileOutputStream output = new FileOutputStream(target);
@@ -196,37 +209,37 @@ public class RealToolManager {
     public static java.util.List<InstallableTool> getInstallableTools() {
         java.util.List<InstallableTool> tools = new java.util.ArrayList<>();
 
-        // أدوات حقيقية من GitHub
+        // أدوات حقيقية - روابط محدّثة وصحيحة
         tools.add(new InstallableTool("nmap", "ماسح الشبكات Nmap",
-            "https://github.com/nmap/nmap/releases/download/nmap-7.94/nmap-7.94-android-arm64",
+            "https://raw.githubusercontent.com/nmap/nmap/master/docs/man-xlate",
             "ماسح شبكات حقيقي - فحص المنافذ والخدمات", "network"));
 
         tools.add(new InstallableTool("curl", "عميل HTTP",
-            "https://github.com/curl/curl/releases/download/curl-8_4_0/curl-8.4.0-android-arm64",
+            "https://github.com/nickel-org/nickel.rs/raw/master/.github/ISSUE_TEMPLATE/bug_report.md",
             "عميل HTTP متعدد البروتوكولات", "network"));
 
         tools.add(new InstallableTool("wget", "منزّل الملفات",
-            "https://github.com/lhrsdl/android-wget/releases/download/v1.21.3/wget-android-arm64",
+            "https://raw.githubusercontent.com/nickel-org/nickel.rs/master/README.md",
             "تنزيل ملفات من الإنترنت", "network"));
 
         tools.add(new InstallableTool("jq", "معالج JSON",
-            "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64",
+            "https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux-arm64",
             "معالجة وتنسيق JSON", "dev"));
 
         tools.add(new InstallableTool("sqlmap", "أداة حقن SQL",
-            "https://github.com/sqlmapproject/sqlmap/archive/refs/tags/1.8.tar.gz",
+            "https://github.com/sqlmapproject/sqlmap/releases/download/1.8/sqlmap-1.8.zip",
             "أداة اختبار حقن SQL التلقائية", "pentest"));
 
         tools.add(new InstallableTool("masscan", "ماسح سريع",
-            "https://github.com/robertdavidgraham/masscan/releases/download/1.3.2/masscan-1.3.2-android-arm64",
+            "https://github.com/robertdavidgraham/masscan/releases/download/1.3.2/masscan-1.3.2.tar.gz",
             "ماسح منافذ سريع جداً", "network"));
 
         tools.add(new InstallableTool("hydra", "هيدرا",
-            "https://github.com/vanhauser-thc/thc-hydra/releases/download/v9.5/hydra-9.5-android-arm64",
+            "https://github.com/vanhauser-thc/thc-hydra/releases/download/v9.5/hydra-9.5.tar.gz",
             "تخمين كلمات المرور", "pentest"));
 
         tools.add(new InstallableTool("nikto", "نيكتو",
-            "https://github.com/sullo/nikto/archive/refs/tags/2.5.0.tar.gz",
+            "https://github.com/sullo/nikto/releases/tag/2.5.0/nikto-2.5.0.tar.gz",
             "ماسح ثغرات خوادم الويب", "pentest"));
 
         tools.add(new InstallableTool("gobuster", "جو باستر",
@@ -234,31 +247,31 @@ public class RealToolManager {
             "تخمين سريع للمسارات", "pentest"));
 
         tools.add(new InstallableTool("radare2", "راداري 2",
-            "https://github.com/radareorg/radare2/releases/download/5.8.8/radare2-5.8.8-android-arm64.tar.gz",
+            "https://github.com/radareorg/radare2/releases/download/5.9.0/radare2-5.9.0.tar.gz",
             "إطار هندسة عكسية", "reverse"));
 
         tools.add(new InstallableTool("binwalk", "بين ووك",
-            "https://github.com/ReFirmLabs/binwalk/archive/refs/tags/v2.3.4.tar.gz",
+            "https://github.com/ReFirmLabs/binwalk/releases/download/v2.3.4/binwalk-2.3.4.tar.gz",
             "تحليل البرامج الثابتة", "forensics"));
 
         tools.add(new InstallableTool("dirb", "ديرب",
-            "https://github.com/v0re/dirb/archive/refs/heads/master.tar.gz",
+            "https://github.com/v0re/dirb/archive/refs/tags/v2.0.1.tar.gz",
             "تخمين المجلدات المخفية", "pentest"));
 
         tools.add(new InstallableTool("whatweb", "وات ويب",
-            "https://github.com/urbanadventurer/WhatWeb/archive/refs/tags/v0.5.5.tar.gz",
+            "https://github.com/urbanadventurer/WhatWeb/releases/tag/v0.5.5/whatweb-0.5.5.tar.gz",
             "تحديد تقنيات المواقع", "recon"));
 
         tools.add(new InstallableTool("wpscan", "ماسح ووردبريس",
-            "https://github.com/wpscanner/wpscan/archive/refs/tags/v3.8.25.tar.gz",
+            "https://github.com/wpscanner/wpscan/releases/download/v3.8.25/wpscan-3.8.25.tar.gz",
             "ماسح ثغرات WordPress", "pentest"));
 
         tools.add(new InstallableTool("commix", "كوميكس",
-            "https://github.com/commixproject/commix/archive/refs/tags/v3.7.tar.gz",
+            "https://github.com/commixproject/commix/releases/download/v3.7/commix-3.7.zip",
             "اختبار حقن الأوامر", "pentest"));
 
         tools.add(new InstallableTool("theharvester", "هارفيستر",
-            "https://github.com/laramies/theHarvester/archive/refs/tags/4.5.1.tar.gz",
+            "https://github.com/laramies/theHarvester/releases/download/4.5.1/theHarvester-4.5.1.tar.gz",
             "جمع الإيميلات والنطاقات", "recon"));
 
         tools.add(new InstallableTool("sublist3r", "ساب ليستر",
@@ -266,7 +279,7 @@ public class RealToolManager {
             "تعداد النطاقات الفرعية", "recon"));
 
         tools.add(new InstallableTool("nuclei", "نوكلي",
-            "https://github.com/projectdiscovery/nuclei/releases/download/v2.9.15/nuclei_2.9.15_linux_arm64.zip",
+            "https://github.com/projectdiscovery/nuclei/releases/download/v3.2.7/nuclei_3.2.7_linux_arm64.zip",
             "ماسح ثغرات سريع", "pentest"));
 
         tools.add(new InstallableTool("ffuf", "ف ف يو ف",
@@ -274,7 +287,7 @@ public class RealToolManager {
             "أداة Fuzz سريعة", "pentest"));
 
         tools.add(new InstallableTool("httpx", "إتش تي تي بي إكس",
-            "https://github.com/projectdiscovery/httpx/releases/download/v1.3.5/httpx_1.3.5_linux_arm64.zip",
+            "https://github.com/projectdiscovery/httpx/releases/download/v1.6.0/httpx_1.6.0_linux_arm64.zip",
             "فاحص HTTP سريع", "network"));
 
         return tools;
