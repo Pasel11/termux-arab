@@ -2,8 +2,6 @@ package com.termux.arab.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,44 +17,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // تثبيت معالج أخطاء عام لمنع الـ crash
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+            android.util.Log.e("TermuxArab", "Uncaught exception", throwable);
+        });
+
         try {
             setContentView(R.layout.activity_main);
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         } catch (Exception e) {
-            // إذا فشل تحميل الواجهة، نخرج بهدوء
             finish();
             return;
         }
 
-        // إنشاء مجلد home (آمن)
+        // إنشاء مجلد أساسي فقط (آمن)
         try {
             new java.io.File(getFilesDir(), "home").mkdirs();
         } catch (Exception e) {}
 
-        // تهيئة الواجهة
+        // تهيئة الواجهة فقط (بدون خدمات خطيرة)
         try {
             initViews();
         } catch (Exception e) {
-            Toast.makeText(this, "⚠️ خطأ في التحميل: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "⚠️ خطأ: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-        // تهيئة بيئة Linux في الخلفية (بدون تعطيل الواجهة)
-        new Thread(() -> {
-            try {
-                new com.termux.arab.core.LinuxEnv(this).init();
-            } catch (Exception e) {
-                // تجاهل - لن يكسر التطبيق
-            }
-        }).start();
-
-        // بدء خدمة الخلفية بتأخير (لتجنب crash)
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            try {
-                com.termux.arab.core.BackgroundService.start(this);
-            } catch (Exception e) {
-                // تجاهل - الخدمة اختيارية
-            }
-        }, 2000);
     }
 
     private void initViews() {
@@ -67,38 +52,30 @@ public class MainActivity extends AppCompatActivity {
         rv.setAdapter(new CategoryAdapter(cats, this::openCategory));
 
         // أزرار
-        setClick(R.id.btn_terminal, () -> startActivity(new Intent(this, TerminalActivity.class)));
-        setClick(R.id.btn_about, () -> startActivity(new Intent(this, AboutActivity.class)));
-        setClick(R.id.btn_vuln_scanner, () -> startActivity(new Intent(this, VulnScannerActivity.class)));
-        setClick(R.id.btn_vuln_db, () -> startActivity(new Intent(this, VulnDBActivity.class)));
-        setClick(R.id.btn_network_scanner, () -> startActivity(new Intent(this, NetworkScannerActivity.class)));
-        setClick(R.id.btn_system_monitor, () -> startActivity(new Intent(this, SystemMonitorActivity.class)));
-        setClick(R.id.btn_password_tools, () -> startActivity(new Intent(this, PasswordToolsActivity.class)));
-        setClick(R.id.btn_http_tester, () -> startActivity(new Intent(this, HttpTesterActivity.class)));
-        setClick(R.id.btn_github, () -> startActivity(new Intent(this, GithubActivity.class)));
-        setClick(R.id.btn_packages, () -> startActivity(new Intent(this, PackageManagerActivity.class)));
-        setClick(R.id.btn_web_pentest, () -> startActivity(new Intent(this, WebPentestActivity.class)));
-        setClick(R.id.btn_ai, () -> startActivity(new Intent(this, AIAssistantActivity.class)));
-        setClick(R.id.btn_kali, () -> startActivity(new Intent(this, KaliLinuxActivity.class)));
-        setClick(R.id.btn_installer, () -> startActivity(new Intent(this, ToolInstallerActivity.class)));
+        setClick(R.id.btn_terminal, () -> openActivity(TerminalActivity.class));
+        setClick(R.id.btn_about, () -> openActivity(AboutActivity.class));
+        setClick(R.id.btn_vuln_scanner, () -> openActivity(VulnScannerActivity.class));
+        setClick(R.id.btn_vuln_db, () -> openActivity(VulnDBActivity.class));
+        setClick(R.id.btn_network_scanner, () -> openActivity(NetworkScannerActivity.class));
+        setClick(R.id.btn_system_monitor, () -> openActivity(SystemMonitorActivity.class));
+        setClick(R.id.btn_password_tools, () -> openActivity(PasswordToolsActivity.class));
+        setClick(R.id.btn_http_tester, () -> openActivity(HttpTesterActivity.class));
+        setClick(R.id.btn_github, () -> openActivity(GithubActivity.class));
+        setClick(R.id.btn_packages, () -> openActivity(PackageManagerActivity.class));
+        setClick(R.id.btn_web_pentest, () -> openActivity(WebPentestActivity.class));
+        setClick(R.id.btn_ai, () -> openActivity(AIAssistantActivity.class));
+        setClick(R.id.btn_kali, () -> openActivity(KaliLinuxActivity.class));
+        setClick(R.id.btn_installer, () -> openActivity(ToolInstallerActivity.class));
 
-        // نافذة AI العائمة (آمنة)
+        // زر AI العائم — معالج آمن
         try {
-            AIFloatingWindow aiWindow = new AIFloatingWindow(this);
             Button btnFloatingAI = findViewById(R.id.btn_floating_ai);
-            btnFloatingAI.setOnClickListener(v -> {
-                try {
-                    if (aiWindow.isVisible()) {
-                        aiWindow.hide();
-                        btnFloatingAI.setText("🤖 تفعيل المساعد");
-                    } else {
-                        aiWindow.show();
-                        btnFloatingAI.setText("🤖 إخفاء المساعد");
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(this, "⚠️ يحتاج إذن العرض فوق التطبيقات", Toast.LENGTH_SHORT).show();
-                }
-            });
+            if (btnFloatingAI != null) {
+                btnFloatingAI.setOnClickListener(v -> {
+                    Toast.makeText(this, "🤖 المساعد العائم متاح من شاشة المساعد", Toast.LENGTH_SHORT).show();
+                    openActivity(AIAssistantActivity.class);
+                });
+            }
         } catch (Exception e) {}
 
         // إحصائيات
@@ -118,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         } catch (Exception e) {}
+    }
+
+    private void openActivity(Class<?> cls) {
+        try {
+            startActivity(new Intent(this, cls));
+        } catch (Exception e) {
+            Toast.makeText(this, "⚠️ تعذّر فتح: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void openCategory(String category) {
